@@ -1,10 +1,10 @@
-const observer = new IntersectionObserver((entries) => {
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) entry.target.classList.add('is-visible');
   });
 }, { threshold: 0.12 });
 
-document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
 document.querySelectorAll('[data-carousel]').forEach((carousel) => {
   const track = carousel.querySelector('.preview-track');
@@ -15,7 +15,9 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
   let index = 0;
 
   function update() {
-    track.style.transform = `translateX(-${index * 100}%)`;
+    if (track) {
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
     dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
   }
 
@@ -43,23 +45,69 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
   update();
 });
 
-const sectionLinks = [...document.querySelectorAll('.side-nav a, .top-nav a')];
-const observedSections = sectionLinks
-  .map((link) => document.querySelector(link.getAttribute('href')))
-  .filter(Boolean);
+/* MENU ATIVO - LATERAL */
+const sideLinks = [...document.querySelectorAll('.side-nav a')];
+const sideSections = [...new Set(
+  sideLinks
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean)
+)];
 
-const activeObserver = new IntersectionObserver((entries) => {
+const sideObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       const id = `#${entry.target.id}`;
-      sectionLinks.forEach((link) => {
+      sideLinks.forEach((link) => {
         link.classList.toggle('active', link.getAttribute('href') === id);
       });
     }
   });
-}, { threshold: 0.45 });
+}, {
+  rootMargin: '-20% 0px -60% 0px',
+  threshold: 0.01
+});
 
-observedSections.forEach((section) => activeObserver.observe(section));
+sideSections.forEach((section) => sideObserver.observe(section));
+
+/* MENU ATIVO - HORIZONTAL */
+const topLinks = [...document.querySelectorAll('.top-nav a')];
+const topSections = [...new Set(
+  topLinks
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean)
+)];
+
+function clearTopNavActive() {
+  topLinks.forEach((link) => link.classList.remove('active'));
+}
+
+const topObserver = new IntersectionObserver((entries) => {
+  if (window.scrollY < 200) {
+    clearTopNavActive();
+    return;
+  }
+
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const id = `#${entry.target.id}`;
+      topLinks.forEach((link) => {
+        link.classList.toggle('active', link.getAttribute('href') === id);
+      });
+    }
+  });
+}, {
+  rootMargin: '-20% 0px -60% 0px',
+  threshold: 0.01
+});
+
+topSections.forEach((section) => topObserver.observe(section));
+
+window.addEventListener('load', clearTopNavActive);
+window.addEventListener('scroll', () => {
+  if (window.scrollY < 200) {
+    clearTopNavActive();
+  }
+});
 
 const EMAILJS_SERVICE_ID = 'service_w7iqsyt';
 const EMAILJS_REPLY_TEMPLATE_ID = 'resposta-email';
@@ -111,14 +159,12 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      // 1) envia a mensagem do visitante para você
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_CONTACT_TEMPLATE_ID,
         contactParams
       );
 
-      // 2) envia resposta automática para a pessoa
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_REPLY_TEMPLATE_ID,

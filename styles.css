@@ -439,6 +439,30 @@ textarea {
   transition: var(--transition)
 }
 
+.topic-link-publi {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 42px;
+  padding: 10px 6px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: rgba(255, 255, 255, .04);
+  transition: var(--transition);
+}
+
+.publication-place {
+  font-size: 0.9rem;
+  line-height: 2;
+}
+
+.publication-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .topic-link:hover {
   transform: translateY(-2px);
   border-color: rgba(114, 216, 255, .24)
