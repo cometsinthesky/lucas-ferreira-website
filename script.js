@@ -8,7 +8,7 @@ document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el))
 
 document.querySelectorAll('[data-carousel]').forEach((carousel) => {
   const track = carousel.querySelector('.preview-track');
-  const slides = carousel.querySelectorAll('.preview-slide');
+  const slides = carousel.querySelectorAll('.preview-slide, .preview-slide-fit');
   const dots = carousel.querySelectorAll('.preview-dot');
   const prevBtn = carousel.querySelector('[data-prev]');
   const nextBtn = carousel.querySelector('[data-next]');
