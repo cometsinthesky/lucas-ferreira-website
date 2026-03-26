@@ -10,8 +10,7 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
   const track = carousel.querySelector('.preview-track');
   const slides = carousel.querySelectorAll('.preview-slide, .preview-slide-fit');
   const dots = carousel.querySelectorAll('.preview-dot');
-  const prevBtn = carousel.querySelector('[data-prev]');
-  const nextBtn = carousel.querySelector('[data-next]');
+  const gallery = carousel.querySelector('.gallery-preview');
   let index = 0;
 
   function update() {
@@ -21,18 +20,31 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
     dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
   }
 
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      index = (index - 1 + slides.length) % slides.length;
-      update();
-    });
+  function goPrev() {
+    index = (index - 1 + slides.length) % slides.length;
+    update();
   }
 
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      index = (index + 1) % slides.length;
-      update();
-    });
+  function goNext() {
+    index = (index + 1) % slides.length;
+    update();
+  }
+
+  if (gallery && slides.length > 1) {
+    const prevEdge = document.createElement('button');
+    prevEdge.type = 'button';
+    prevEdge.className = 'preview-edge preview-edge-prev';
+    prevEdge.setAttribute('aria-label', 'Imagem anterior');
+
+    const nextEdge = document.createElement('button');
+    nextEdge.type = 'button';
+    nextEdge.className = 'preview-edge preview-edge-next';
+    nextEdge.setAttribute('aria-label', 'Próxima imagem');
+
+    prevEdge.addEventListener('click', goPrev);
+    nextEdge.addEventListener('click', goNext);
+
+    gallery.append(prevEdge, nextEdge);
   }
 
   dots.forEach((dot, i) => {
@@ -43,6 +55,48 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
   });
 
   update();
+});
+
+const lightbox = document.createElement('div');
+lightbox.className = 'image-lightbox';
+lightbox.innerHTML = `
+  <div class="image-lightbox__inner">
+    <img class="image-lightbox__image" alt="Preview ampliado da imagem">
+    <div class="image-lightbox__caption"></div>
+  </div>
+`;
+document.body.appendChild(lightbox);
+
+const lightboxImage = lightbox.querySelector('.image-lightbox__image');
+const lightboxCaption = lightbox.querySelector('.image-lightbox__caption');
+
+function closeLightbox() {
+  lightbox.classList.remove('is-open');
+  document.body.classList.remove('lightbox-open');
+}
+
+function openLightbox(src, alt) {
+  lightboxImage.src = src;
+  lightboxImage.alt = alt || 'Imagem ampliada';
+  lightboxCaption.textContent = alt || '';
+  lightbox.classList.add('is-open');
+  document.body.classList.add('lightbox-open');
+}
+
+document.querySelectorAll('[data-lightbox]').forEach((img) => {
+  img.addEventListener('click', () => {
+    if (lightbox.classList.contains('is-open') && lightboxImage.src === img.src) {
+      closeLightbox();
+      return;
+    }
+    openLightbox(img.src, img.alt);
+  });
+});
+
+lightbox.addEventListener('click', closeLightbox);
+lightboxImage.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeLightbox();
 });
 
 /* MENU ATIVO - LATERAL */
@@ -69,45 +123,49 @@ const sideObserver = new IntersectionObserver((entries) => {
 
 sideSections.forEach((section) => sideObserver.observe(section));
 
-/* MENU ATIVO - HORIZONTAL */
-const topLinks = [...document.querySelectorAll('.top-nav a')];
-const topSections = [...new Set(
-  topLinks
-    .map(link => document.querySelector(link.getAttribute('href')))
-    .filter(Boolean)
-)];
+/* TOPBAR APARECE APENAS NA BORDA SUPERIOR */
+const topbar = document.querySelector('.topbar');
 
-function clearTopNavActive() {
-  topLinks.forEach((link) => link.classList.remove('active'));
-}
+if (topbar) {
+  const hoverZone = document.createElement('div');
+  hoverZone.className = 'topbar-hover-zone';
+  document.body.appendChild(hoverZone);
 
-const topObserver = new IntersectionObserver((entries) => {
-  if (window.scrollY < 200) {
-    clearTopNavActive();
-    return;
+  let hideTimer = null;
+
+  function showTopbar() {
+    clearTimeout(hideTimer);
+    topbar.classList.add('is-revealed');
   }
 
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const id = `#${entry.target.id}`;
-      topLinks.forEach((link) => {
-        link.classList.toggle('active', link.getAttribute('href') === id);
-      });
+  function hideTopbar() {
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => {
+      if (window.innerWidth > 820) {
+        topbar.classList.remove('is-revealed');
+      }
+    }, 120);
+  }
+
+  if (window.innerWidth > 820) {
+    topbar.classList.remove('is-revealed');
+  }
+
+  hoverZone.addEventListener('mouseenter', showTopbar);
+  topbar.addEventListener('mouseenter', showTopbar);
+
+  hoverZone.addEventListener('mouseleave', hideTopbar);
+  topbar.addEventListener('mouseleave', hideTopbar);
+
+  window.addEventListener('resize', () => {
+    clearTimeout(hideTimer);
+    if (window.innerWidth <= 820) {
+      topbar.classList.add('is-revealed');
+    } else {
+      topbar.classList.remove('is-revealed');
     }
   });
-}, {
-  rootMargin: '-20% 0px -60% 0px',
-  threshold: 0.01
-});
-
-topSections.forEach((section) => topObserver.observe(section));
-
-window.addEventListener('load', clearTopNavActive);
-window.addEventListener('scroll', () => {
-  if (window.scrollY < 200) {
-    clearTopNavActive();
-  }
-});
+}
 
 const EMAILJS_SERVICE_ID = 'service_w7iqsyt';
 const EMAILJS_REPLY_TEMPLATE_ID = 'resposta-email';

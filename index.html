@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lucas Ferreira Science & Physics</title>
-<meta name="description" content="Portfólio pessoal moderno com seções internas para profile, jogos, simulações, materiais didáticos, vídeos, publicações, livro e contato.">
+<meta name="description" content="Portfólio pessoal moderno com seções internas para profile, jogos, simulações, materiais didáticos, publicações, livro e contato.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -16,12 +16,18 @@
 <div class="bg-orb orb-2"></div>
 <div class="bg-grid"></div>
 
+<div id="page"></div>
+
 <div class="layout">
   <aside class="sidebar">
     <div class="brand-card reveal">
       <img src="assets/profile/lucas-profile.jpg" alt="Foto de Lucas Ferreira" class="brand-photo">
       <div class="brand-copy">
-        <h1>Lucas Ferreira <span>Science & Physics</span></h1>
+        <h1>
+          <a href="#page" class="brand-title-link">
+            Lucas Ferreira <span>Science & Physics</span>
+          </a>
+        </h1>
         <p class="brand-text">Educação em Ciências, Física, recursos digitais, cultura visual e materiais educacionais.</p>
       </div>
     </div>
@@ -35,15 +41,17 @@
       <a href="#materiais-didaticos">Materiais Didáticos</a>
       <a href="#imagens">Imagens</a>
       <a href="#publicacoes">Publicações</a>
-      <a href="#contato-email">Contato</a>
-      <a href="#contato-email">Email</a>
+      <a href="#contato-email">Contato e Email</a>
     </nav>
 
     <section class="mini-panel reveal">
       <p class="mini-panel__title">Atalhos</p>
       <ul class="mini-list">
-        <li><a href="#jogos-impressos">Jogo Universo e Bingo Universarium</a></li>
+        <li><a href="#jogos-impressos">Jogo Universo, O Viajante e Etherlore</a></li>
+        <li><a href="#jogos-online">Wiki Physics Game e Physics Quiz</a></li>
         <li><a href="#simulacoes">Pulsar 3D e Voyager Decoder</a></li>
+        <li><a href="#imagens">Astrofotografias e Imagens</a></li>
+        <li><a href="#materiais-didaticos">Guias e Oficinas</a></li>
         <li><a href="#publicacoes">Artigos e produção acadêmica</a></li>
         <li><a href="#contato-email">Contato</a></li>
       </ul>
@@ -76,10 +84,9 @@
 
       <section class="hero">
         <div class="hero-copy panel reveal">
-          <p class="eyebrow">Portfólio integrado</p>
           <h2>O seu Repositório Educacional de Ciências e Física</h2>
           <p class="lead">
-          Um espaço digital criado para reunir jogos educacionais, simulações, materiais didáticos, vídeos, publicações e projetos autorais ligados ao ensino de Ciências e Física. Este repositório foi pensado como um portfólio vivo, onde recursos visuais, acadêmicos e pedagógicos se conectam para apoiar a aprendizagem, a divulgação científica e a criação de experiências educacionais mais interativas, acessíveis e reais.
+          Um espaço digital criado para reunir jogos educacionais, simulações, materiais didáticos, publicações e projetos autorais ligados ao ensino de Ciências e Física. Este repositório foi pensado como um portfólio vivo, onde recursos visuais, acadêmicos e pedagógicos se conectam para apoiar a aprendizagem, a divulgação científica e a criação de experiências educacionais mais interativas, acessíveis e reais.
           </p>
           <div class="hero-actions">
             <a href="#jogos-online" class="btn btn-primary">Explorar recursos</a>
@@ -117,7 +124,7 @@
     </div>
     <div class="profile-card__content">
       <p>Lucas Ferreira é educador, pesquisador e criador de recursos educacionais autorais, com atuação em Educação em Ciências, Física, cultura visual, gamificação, simulações e produção de materiais didáticos. Seu trabalho integra pesquisa acadêmica, design educacional e desenvolvimento de experiências visuais e interativas voltadas ao ensino e à divulgação científica.</p>
-      <p>Neste portfólio, reúne jogos online, jogos impressos, simulações, vídeos, materiais didáticos, publicações e projetos editoriais, organizados em uma navegação contínua e responsiva para facilitar o acesso em computador, tablet e smartphone.</p>
+      <p>Neste portfólio, reúne jogos online, jogos impressos, simulações, materiais didáticos, publicações e projetos editoriais, organizados em uma navegação contínua e responsiva para facilitar o acesso em computador, tablet e smartphone.</p>
       <h3>Trajetória acadêmica e profissional</h3>
       <p>Atualmente é professor bilíngue de Física e Ciências dos anos finais do Ensino Fundamental, currículos Internacional e Canadense (2026). Foi Coordenador Pedagógico e Orientador Educacional do Ensino Fundamental e Médio da Maple Bear Unidade Sudoeste (Brasília)(2025). Doutorando do Programa de Pós-Graduação em Educação em Ciências (PPGEduc/UnB). Professor especialista de Física e Ciências na British School of Brasilia (2024). Mestre em Ensino de Física pela Universidade de Brasília (UnB)(2025). Foi monitor educacional bilíngue no Planetário de Brasília, onde desempenhou atividades de ensino e educação em Astronomia e Ciências Naturais (2021). Fez parte do Projeto "GLOBE/NASA/AEB no âmbito do Ciência na Escola" como parte do corpo técnico do Programa GLOBE Brasil, vinculado como bolsista do CNPq (2019-2020). Graduado em Ciências Naturais pela Universidade de Brasília (UnB)(2017). Foi professor temporário de Ciências Naturais pela Secretaria de Educação do Distrito Federal (SEDF) (2018). Fez parte do Programa AEB Escola (2015 - 2017) da Agência Espacial Brasileira (AEB) como auxiliar educacional, onde realizou diversas atividades em eventos de divulgação científica regionais e nacionais.</p>
       <h4>
@@ -909,60 +916,243 @@
 <!-- IMAGENS -->
 
 <section id="imagens" class="section-shell reveal">
-  <div class="section-head"><div><p class="eyebrow">Imagens</p><h3>Imagens, diagramas e conteúdos audiovisuais</h3></div><div class="section-count">1 tópico</div></div>
-  <div class="topics">
-    <article class="topic-card reveal">
-      <div class="topic-thumb"><img src="assets/imagens/" alt="Project Trailers"></div>
-      <div class="topic-content">
-        <div class="topic-meta"><span class="topic-chip">Trailer</span><span class="topic-chip">Divulgação</span><span class="topic-chip">Projetos</span></div>
-        <h3>Project Trailers</h3>
-        <p>Trailers curtos e vídeos de apresentação para jogos, simulações, projetos e recursos educacionais.</p>
-        <div class="topic-actions">
-          <a href="#imagens" class="topic-link">Explorar seção</a>
-          <a href="#contato-email" class="topic-link">Solicitar material</a>
-        </div>
-      </div>
-      
-    <div class="preview-wrap" data-carousel="project-trailers">
-      <div class="preview-top">
-        <strong>Preview do material</strong>
-        <div class="preview-controls">
-          <button class="preview-btn" data-prev aria-label="Anterior">←</button>
-          <button class="preview-btn" data-next aria-label="Próximo">→</button>
-        </div>
-      </div>
-      <div class="gallery-preview"><div class="preview-track"><div class="preview-slide"><img src="assets/imagens/project-trailers.svg" alt="Trailer visual"><div class="preview-caption"><strong>Trailer visual</strong><br>Preview da identidade audiovisual dos projetos.</div></div><div class="preview-slide"><img src="assets/imagens/course-videos.svg" alt="Cortes e destaques"><div class="preview-caption"><strong>Cortes e destaques</strong><br>Exemplo de mídia antes de abrir o conteúdo completo.</div></div><div class="preview-slide"><img src="assets/profile/portfolio-highlights.svg" alt="Divulgação"><div class="preview-caption"><strong>Divulgação</strong><br>Material útil para redes, eventos e apresentações.</div></div></div></div>
-      <div class="preview-dots"><button class="preview-dot active" aria-label="Preview 1"></button><button class="preview-dot " aria-label="Preview 2"></button><button class="preview-dot " aria-label="Preview 3"></button></div>
+  <div class="section-head">
+    <div>
+      <p class="eyebrow">Imagens</p>
+      <h3>Astrofotografias, diagramas e materiais visuais para download</h3>
     </div>
-    
+    <div class="section-count">2 tópicos</div>
+  </div>
+  <div class="image-grid-section">
+    <article class="image-grid-card reveal">
+      <div class="image-grid-head">
+        <div>
+          <p class="eyebrow">Astrofotografias</p>
+          <h3>Astrofotografias e Processamento</h3>
+        </div>
+        <p class="image-grid-note">Clique na imagem para ampliar. Clique novamente para fechar.</p>
+      </div>
+      <div class="image-grid-preview" aria-label="Galeria de astrofotografia">
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/astrofotografia-na-escola.jpg"
+            alt="Logo Astrofotografia na Escola" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/astrofotografia-na-escola.jpg"
+              download target="_blank" rel="noopener noreferrer">Logo Astrofotografia na Escola</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/crux-chapada-veadeiros.jpg"
+            alt="Cruzeiro do Sul" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/crux-chapada-veadeiros.jpg"
+              download target="_blank" rel="noopener noreferrer">Cruzeiro do Sul</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/via-lactea-chapada-veadeiros.jpg"
+            alt="Via Láctea" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/via-lactea-chapada-veadeiros.jpg"
+              download target="_blank" rel="noopener noreferrer">Via Láctea</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/star-trail.jpg"
+            alt="Star trail" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/star-trail.jpg"
+              download target="_blank" rel="noopener noreferrer">Star trail</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/eclipse-brasilia.jpg"
+            alt="Eclipse Brasília" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/eclipse-brasilia.jpg"
+              download target="_blank" rel="noopener noreferrer">Eclipse Brasília</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/lua-jk.jpg"
+            alt="Lua JK" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/lua-jk.jpg"
+              download target="_blank" rel="noopener noreferrer">Lua JK</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/constelacoes-casb-astronomia-na-praca.jpg"
+            alt="Constelações CAsB" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/constelacoes-casb-astronomia-na-praca.jpg"
+              download target="_blank" rel="noopener noreferrer">Constelações CAsB</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/constelacoes-casb.jpg"
+            alt="Constelações CAsB" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/constelacoes-casb.jpg"
+              download target="_blank" rel="noopener noreferrer">Constelações CAsB</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/eclipse-lunar.jpg"
+            alt="Eclipse Lunar" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/eclipse-lunar.jpg"
+              download target="_blank" rel="noopener noreferrer">Eclipse Lunar</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/eclipse-solar.jpg"
+            alt="Eclipse Solar" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/eclipse-solar.jpg"
+              download target="_blank" rel="noopener noreferrer">Eclipse Solar</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/passagem-iss-brasilia.jpg"
+            alt="Passagem ISS" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/passagem-iss-brasilia.jpg"
+              download target="_blank" rel="noopener noreferrer">Passagem ISS</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/crateras-lua.jpg"
+            alt="Crateras Lua" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/crateras-lua.jpg"
+              download target="_blank" rel="noopener noreferrer">Crateras Lua</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/sirius.jpg"
+            alt="Sirius" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/sirius.jpg"
+              download target="_blank" rel="noopener noreferrer">Sirius</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/caixinha-de-joias.jpg"
+            alt="Caixinha de Jóias" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/caixinha-de-joias.jpg"
+              download target="_blank" rel="noopener noreferrer">Caixinha de Jóias</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/omega-centauri.jpg"
+            alt="Omega Centauri" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/omega-centauri.jpg"
+              download target="_blank" rel="noopener noreferrer">Omega Centauri</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/orion-sky-view.jpg"
+            alt="Nebulosa de Órion" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/orion-sky-view.jpg"
+              download target="_blank" rel="noopener noreferrer">Nebulosa de Órion</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/andromeda-iras-galex.jpg"
+            alt="Galáxia de Andrômeda" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/andromeda-iras-galex.jpg"
+              download target="_blank" rel="noopener noreferrer">Galáxia de Andrômeda</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/eta-carinae-full.jpg"
+            alt="Eta Carinae" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/eta-carinae-full.jpg"
+              download target="_blank" rel="noopener noreferrer">Eta Carinae</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/eta-carinae.jpg"
+            alt="Eta Carinae" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/eta-carinae.jpg"
+              download target="_blank" rel="noopener noreferrer">Eta Carinae</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/carina-nebula.jpg"
+            alt="Nebulosa da Carina" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/carina-nebula.jpg"
+              download target="_blank" rel="noopener noreferrer">Nebulosa da Carina</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/nebulosa-aguia.jpg"
+            alt="Nebulosa da Águia" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/nebulosa-aguia.jpg"
+              download target="_blank" rel="noopener noreferrer">Nebulosa da Águia</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/pilares-jwst.jpg"
+            alt="Pilares da Criação" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/pilares-jwst.jpg"
+              download target="_blank" rel="noopener noreferrer">Pilares da Criação</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/borboleta-hubble.jpg"
+            alt="Nebulosa da Borboleta" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/borboleta-hubble.jpg"
+              download target="_blank" rel="noopener noreferrer">Nebulosa da Borboleta</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/astrofotos/nebulosa-carina.jpg"
+            alt="Carina JWST" data-lightbox>
+          <h4><a href="assets/imagens/astrofotos/nebulosa-carina.jpg"
+              download target="_blank" rel="noopener noreferrer">Carina JWST</a></h4>
+        </article>
+      </div>
     </article>
-    
-    <article class="topic-card reveal">
-      <div class="topic-thumb"><img src="assets/imagens/course-videos.svg" alt="Course Videos"></div>
-      <div class="topic-content">
-        <div class="topic-meta"><span class="topic-chip">Vídeos</span><span class="topic-chip">Educação</span><span class="topic-chip">Mobile</span></div>
-        <h3>Course Videos</h3>
-        <p>Vídeos de apoio, demonstrações, registros de aula e conteúdos audiovisuais conectados ao portfólio.</p>
-        <div class="topic-actions">
-          <a href="#imagens" class="topic-link">Explorar seção</a>
-          <a href="#contato-email" class="topic-link">Solicitar material</a>
+
+    <article class="image-grid-card reveal">
+      <div class="image-grid-head">
+        <div>
+          <p class="eyebrow">Imagens, Diagramas e Traduções</p>
+          <h3>Imagens, Diagramas e Traduções</h3>
         </div>
+        <p class="image-grid-note">Clique na imagem para ampliar. Clique novamente para fechar.</p>
       </div>
-      
-    <div class="preview-wrap" data-carousel="course-videos">
-      <div class="preview-top">
-        <strong>Preview do material</strong>
-        <div class="preview-controls">
-          <button class="preview-btn" data-prev aria-label="Anterior">←</button>
-          <button class="preview-btn" data-next aria-label="Próximo">→</button>
-        </div>
+      <div class="image-grid-preview"
+        aria-label="Galeria de imagens, diagramas e traduções">
+        <article class="image-grid-item"><img
+            src="assets/imagens/imagens-diagramas-trad/trad-estrutura-pulsar-nrao.jpg"
+            alt="Estrutura Pulsar" data-lightbox>
+          <h4><a href="assets/imagens/imagens-diagramas-trad/trad-estrutura-pulsar-nrao.jpg"
+              download target="_blank" rel="noopener noreferrer">Estrutura Pulsar</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/imagens-diagramas-trad/trad-estrutura-pulsar.jpg"
+            alt="Estrutura Pulsar" data-lightbox>
+          <h4><a href="assets/imagens/imagens-diagramas-trad/trad-estrutura-pulsar.jpg"
+              download target="_blank" rel="noopener noreferrer">Estrutura Pulsar</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/imagens-diagramas-trad/trad-neutron-star-interior.jpg"
+            alt="Interior Pulsar" data-lightbox>
+          <h4><a href="assets/imagens/imagens-diagramas-trad/trad-neutron-star-interior.jpg"
+              download target="_blank" rel="noopener noreferrer">Interior Pulsar</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/imagens-diagramas-trad/trad-interior-pulsar.jpg"
+            alt="Interior Pulsar" data-lightbox>
+          <h4><a href="assets/imagens/imagens-diagramas-trad/trad-interior-pulsar.jpg"
+              download target="_blank" rel="noopener noreferrer">Interior Pulsar</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/imagens-diagramas-trad/trad-neutron-star-size.jpg"
+            alt="Tamanho Estrela de Nêutrons" data-lightbox>
+          <h4><a href="assets/imagens/imagens-diagramas-trad/trad-neutron-star-size.jpg"
+              download target="_blank" rel="noopener noreferrer">Tamanho Estrela de Nêutrons</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/imagens-diagramas-trad/trad-evolucao-estelar.jpg"
+            alt="Evolução Estelar" data-lightbox>
+          <h4><a href="assets/imagens/imagens-diagramas-trad/trad-evolucao-estelar.jpg"
+              download target="_blank" rel="noopener noreferrer">Evolução Estelar</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/imagens-diagramas-trad/mulheres-astronomia.png"
+            alt="Mulheres na Astronomia" data-lightbox>
+          <h4><a href="assets/imagens/imagens-diagramas-trad/mulheres-astronomia.png"
+              download target="_blank" rel="noopener noreferrer">Mulheres na Astronomia</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/imagens-diagramas-trad/vegetacao-satelite-cbers4a.jpg"
+            alt="Vegetação Brasília CBERS4" data-lightbox>
+          <h4><a href="assets/imagens/imagens-diagramas-trad/vegetacao-satelite-cbers4a.jpg"
+              download target="_blank" rel="noopener noreferrer">Vegetação Brasília CBERS4</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/imagens-diagramas-trad/vegetacao-satelite-df.jpg"
+            alt="Vegetação Brasília CBERS4" data-lightbox>
+          <h4><a href="assets/imagens/imagens-diagramas-trad/vegetacao-satelite-df.jpg"
+              download target="_blank" rel="noopener noreferrer">Vegetação Brasília CBERS4</a></h4>
+        </article>
+        <article class="image-grid-item"><img
+            src="assets/imagens/imagens-diagramas-trad/planetario-brasilia-bussola.jpg"
+            alt="Planetário de Brasília" data-lightbox>
+          <h4><a href="assets/imagens/imagens-diagramas-trad/planetario-brasilia-bussola.jpg"
+              download target="_blank" rel="noopener noreferrer">Planetário de Brasília</a></h4>
+        </article>
       </div>
-      <div class="gallery-preview"><div class="preview-track"><div class="preview-slide"><img src="assets/imagens/course-videos.svg" alt="Vídeo educacional"><div class="preview-caption"><strong>Vídeo educacional</strong><br>Preview de uma coleção de vídeos temáticos.</div></div><div class="preview-slide"><img src="assets/imagens/project-trailers.svg" alt="Miniaturas e organização"><div class="preview-caption"><strong>Miniaturas e organização</strong><br>Estrutura visual para navegação e descoberta.</div></div><div class="preview-slide"><img src="assets/profile/portfolio-highlights.svg" alt="Acesso em mobile"><div class="preview-caption"><strong>Acesso em mobile</strong><br>Pensado para divulgação e visualização em smartphone.</div></div></div></div>
-      <div class="preview-dots"><button class="preview-dot active" aria-label="Preview 1"></button><button class="preview-dot " aria-label="Preview 2"></button><button class="preview-dot " aria-label="Preview 3"></button></div>
-    </div>
-    
     </article>
-    </div>
+  </div>
 </section>
 
 <!-- PUBLICAÇÕES -->
