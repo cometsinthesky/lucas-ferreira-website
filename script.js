@@ -1,10 +1,27 @@
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) entry.target.classList.add('is-visible');
-  });
-}, { threshold: 0.12 });
+const revealElements = document.querySelectorAll('.reveal');
 
-document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+function revealElement(el) {
+  el.classList.add('is-visible');
+}
+
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting || entry.intersectionRatio > 0) {
+        revealElement(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '0px 0px -12% 0px',
+    threshold: 0.01
+  });
+
+  revealElements.forEach((el) => revealObserver.observe(el));
+} else {
+  revealElements.forEach(revealElement);
+}
 
 document.querySelectorAll('[data-carousel]').forEach((carousel) => {
   const track = carousel.querySelector('.preview-track');
