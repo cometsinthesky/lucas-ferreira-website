@@ -140,7 +140,7 @@ const sideObserver = new IntersectionObserver((entries) => {
 
 sideSections.forEach((section) => sideObserver.observe(section));
 
-/* TOPBAR APARECE APENAS NA BORDA SUPERIOR */
+/* TOPBAR DESKTOP POR HOVER + MOBILE COLAPSÁVEL */
 const topbar = document.querySelector('.topbar');
 
 if (topbar) {
@@ -148,40 +148,83 @@ if (topbar) {
   hoverZone.className = 'topbar-hover-zone';
   document.body.appendChild(hoverZone);
 
+  const topbarToggle = topbar.querySelector('.topbar-toggle');
+  const topbarLinks = topbar.querySelectorAll('.top-nav a');
   let hideTimer = null;
+
+  function isMobileTopbar() {
+    return window.innerWidth <= 820;
+  }
 
   function showTopbar() {
     clearTimeout(hideTimer);
-    topbar.classList.add('is-revealed');
+    if (!isMobileTopbar()) {
+      topbar.classList.add('is-revealed');
+    }
   }
 
   function hideTopbar() {
     clearTimeout(hideTimer);
     hideTimer = setTimeout(() => {
-      if (window.innerWidth > 820) {
+      if (!isMobileTopbar()) {
         topbar.classList.remove('is-revealed');
       }
     }, 120);
   }
 
-  if (window.innerWidth > 820) {
-    topbar.classList.remove('is-revealed');
+  function setMobileExpanded(expanded) {
+    topbar.classList.toggle('is-expanded-mobile', expanded);
+    topbar.classList.toggle('is-collapsed-mobile', !expanded);
+    if (topbarToggle) {
+      topbarToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      topbarToggle.setAttribute(
+        'aria-label',
+        expanded ? 'Recolher menu superior' : 'Expandir menu superior'
+      );
+    }
+  }
+
+  function syncTopbarMode() {
+    clearTimeout(hideTimer);
+
+    if (isMobileTopbar()) {
+      topbar.classList.add('is-revealed');
+      if (!topbar.classList.contains('is-expanded-mobile') && !topbar.classList.contains('is-collapsed-mobile')) {
+        setMobileExpanded(false);
+      }
+    } else {
+      topbar.classList.remove('is-expanded-mobile', 'is-collapsed-mobile');
+      topbar.classList.remove('is-revealed');
+      if (topbarToggle) {
+        topbarToggle.setAttribute('aria-expanded', 'false');
+        topbarToggle.setAttribute('aria-label', 'Expandir menu superior');
+      }
+    }
   }
 
   hoverZone.addEventListener('mouseenter', showTopbar);
   topbar.addEventListener('mouseenter', showTopbar);
-
   hoverZone.addEventListener('mouseleave', hideTopbar);
   topbar.addEventListener('mouseleave', hideTopbar);
 
-  window.addEventListener('resize', () => {
-    clearTimeout(hideTimer);
-    if (window.innerWidth <= 820) {
-      topbar.classList.add('is-revealed');
-    } else {
-      topbar.classList.remove('is-revealed');
-    }
+  if (topbarToggle) {
+    topbarToggle.addEventListener('click', () => {
+      if (!isMobileTopbar()) return;
+      const expanded = topbar.classList.contains('is-expanded-mobile');
+      setMobileExpanded(!expanded);
+    });
+  }
+
+  topbarLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      if (isMobileTopbar()) {
+        setMobileExpanded(false);
+      }
+    });
   });
+
+  window.addEventListener('resize', syncTopbarMode);
+  syncTopbarMode();
 }
 
 const EMAILJS_SERVICE_ID = 'service_w7iqsyt';
