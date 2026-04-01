@@ -592,10 +592,9 @@ textarea {
   justify-content: center;
   min-height: 42px;
   padding: 0 14px;
-  border-radius: 14px;
-  border: 1px solid var(--line);
-  color: var(--text);
-  background: rgba(255, 255, 255, .04);
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fefefe;
   transition: var(--transition)
 }
 
@@ -840,12 +839,12 @@ textarea:focus {
   }
 
   .topic-thumb {
-    min-height: 200px
+    min-height: auto
   }
 
   .topic-thumb-vert {
     border-radius: 6px;
-    min-height: 400px
+    min-height: auto
   }
 }
 
