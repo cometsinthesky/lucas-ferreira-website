@@ -807,6 +807,24 @@ textarea:focus {
   }
 }
 
+@media (max-width:1100px) {
+  .layout {
+    grid-template-columns: 1fr
+  }
+
+  .sidebar {
+    position: relative;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    overflow: visible
+  }
+
+  .hero {
+    grid-template-columns: 1fr
+  }
+}
+
 @media (max-width:820px) {
   .main-content {
     padding: 28px 16px 16px
